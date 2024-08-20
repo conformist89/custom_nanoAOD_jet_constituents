@@ -1,0 +1,10 @@
+<use   name="FWCore/Framework"/>
+<use name="FWCore/PluginManager"/>
+<use   name="FWCore/ParameterSet"/>
+<use   name="DataFormats/PatCandidates"/>
+ <use name="DataFormats/JetReco"/>
+<use   name="DataFormats/NanoAOD"/>
+<use   name="FWCore/Utilities"/>
+<use   name="DataFormats/Common"/>
+<flags EDM_PLUGIN="1"/>
+
