@@ -21,6 +21,7 @@ public:
 private:
     edm::EDGetTokenT<pat::JetCollection> jetToken_;
     edm::EDPutTokenT<pat::JetCollection> jetTokenOut_;
+    edm::EDPutTokenT<nanoaod::FlatTable> tableTokenOut_;  // Add this line
 };
 
 #endif
