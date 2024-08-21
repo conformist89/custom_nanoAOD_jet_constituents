@@ -5,7 +5,7 @@
 
 NanoAODCustomProducer::NanoAODCustomProducer(const edm::ParameterSet& iConfig) :
     jetToken_(consumes<pat::JetCollection>(iConfig.getParameter<edm::InputTag>("jets"))),
-    jetTokenOut_(produces<pat::JetCollection>()),
+    // jetTokenOut_(produces<pat::JetCollection>()),
     tableTokenOut_(produces<nanoaod::FlatTable>())  // Register the FlatTable product
 {}
 
@@ -13,7 +13,7 @@ void NanoAODCustomProducer::produce(edm::StreamID, edm::Event& iEvent, const edm
     edm::Handle<pat::JetCollection> jets;
     iEvent.getByToken(jetToken_, jets);
 
-    auto outputJets = std::make_unique<pat::JetCollection>();
+    
 
 
     std::vector<float> constituentPt;
@@ -63,7 +63,7 @@ void NanoAODCustomProducer::produce(edm::StreamID, edm::Event& iEvent, const edm
             }
         }
 
-        outputJets->push_back(newJet);
+        
     }
 
     // Print the number of jets processed
@@ -103,7 +103,6 @@ void NanoAODCustomProducer::produce(edm::StreamID, edm::Event& iEvent, const edm
     constituentTable->addColumn<int>("constituent_pdgId", std::move(constituentPdgId), "PDG ID of the constituent");
     constituentTable->addColumn<int>("constituent_jetIndex", std::move(jetIndex), "Index of the associated jet");
 
-    iEvent.put(jetTokenOut_, std::move(outputJets));
     iEvent.put(std::move(constituentTable));
 }
 
